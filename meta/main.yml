@@ -1,6 +1,7 @@
 galaxy_info:
-  author: testnetology
-  rolename: vector-role
+  author: test
+  rolename: my-role
+  namespace: my_namespace
   description: vector
   company: your company (optional)
   license: license (GPL-2.0-or-later, MIT, etc)
