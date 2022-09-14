@@ -1,0 +1,36 @@
+---
+# tasks file for vector-role
+#- name: Install Vector
+#  hosts: vector
+#  tasks:
+#    - set_fact:
+#        logs: "{{ app_log_paths.split(',') }}"
+    - name: Download distrib vector
+      get_url:
+        url: "https://packages.timber.io/vector/0.23.0/vector-{{ vector_version }}-x86_64-unknown-linux-gnu.tar.gz"
+        dest: "/tmp/vector-{{ vector_version }}-x86_64-unknown-linux-gnu.tar.gz"
+        mode: 0755
+        timeout: 60
+      run_once: True
+      delegate_to: localhost
+      register: get_vector
+      until: get_vector is succeeded
+    - name: Create directrory for vector
+      file:
+        state: directory
+        path: "{{ vector_home }}"
+      tags: vector_dir  
+    - name: Unarchive on managed
+      unarchive:
+          src: "/tmp/vector-{{ vector_version }}-x86_64-unknown-linux-gnu.tar.gz"
+          dest: "{{ vector_home }}"
+          extra_opts: [--strip-components=1]
+          creates: "{{ vector_home }}/bin/vector"
+      tags: vector
+    - name: Template it
+      template:
+        src: "vector.cfg.j2"
+        dest: "{{ vector_home }}"
+        backup: True
+      register: template_result
+      tags: vector_template 

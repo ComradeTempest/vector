@@ -1,0 +1,24 @@
+vector_config:
+  sources:
+    our_log:
+      type: file
+      ignore_older_secs: 600
+        include:
+          - /tmp/*.log
+        read_from: beginning
+  sinks:
+    to_clickhouse:
+      type: clickhouse
+      inputs:
+        - our_log
+      database: custom
+      endpoint: http://84.201.160.63:8123
+      table: my_table
+      compression: gzip
+      healthcheck: false
+      skip_unknown_fields: true
+
+#  paths:
+#    {% for path in app_log_paths.split(',') %}
+#        - {{ path }}
+#    {% endfor %}

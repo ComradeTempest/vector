@@ -1,0 +1,3 @@
+---
+# vars file for vector-role
+app_log_paths: /tmp/*.log

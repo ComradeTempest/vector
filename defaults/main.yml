@@ -1,0 +1,4 @@
+---
+# defaults file for vector-role
+vector_version: "0.23.0"
+vector_home: "/opt/vector/0.23.0"
