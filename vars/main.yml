@@ -1,3 +1,4 @@
 ---
 # vars file for vector-role
 app_log_paths: /tmp/*.log
+ansible_remote_tmp: /tmp/ansible-${USER}

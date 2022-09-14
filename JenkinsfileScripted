@@ -1,0 +1,16 @@
+node("jenkins-agent-01") {
+    stage("Checkout") {
+        git branch: 'main',
+            url: 'git@github.com:ComradeTempest/js_example.git', credentialsId: '20eabf2e-aef7-4367-b7ea-4d6222f93fe5'
+    }
+    if (env.PROD_RUN == "true") {
+    stage("ProdRun playbook") {
+        sh 'ansible-playbook -i inventory/prod.yml site.yml'
+        }
+    }
+    else {
+    stage("Run playbook in test mobe") {
+        sh 'ansible-playbook -i inventory/prod.yml site.yml --check --diff'
+        }
+    }
+}
