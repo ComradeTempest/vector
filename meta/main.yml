@@ -1,6 +1,6 @@
 galaxy_info:
   author: test
-  role_name: vector-role
+  role_name: vectorrole
   namespace: mynamespace
   description: vector
   company: your company (optional)
