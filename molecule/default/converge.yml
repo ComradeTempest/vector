@@ -5,3 +5,5 @@
     - name: "Include vector-role"
       ansible.builtin.include_role:
         name: "vector-role"
+  vars:
+    ansible_remote_tmp: /tmp/converge
