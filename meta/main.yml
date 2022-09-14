@@ -1,7 +1,7 @@
 galaxy_info:
   author: test
-  rolename: my-role
-  namespace: my_namespace
+  role_name: myrole
+  namespace: mynamespace
   description: vector
   company: your company (optional)
   license: license (GPL-2.0-or-later, MIT, etc)
