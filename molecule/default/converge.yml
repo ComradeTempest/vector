@@ -1,9 +1,9 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: localhost
   tasks:
     - name: "Include vector-role"
       ansible.builtin.include_role:
-        name: "vector-role"
+        name: "vr"
   vars:
     ansible_remote_tmp: /tmp/converge
