@@ -19,3 +19,10 @@ verifier:
   name: ansible
 
 role_name_check: 1
+
+test_sequence:
+  - destroy
+  - create
+  - converge
+#  - idempotence
+  - verify
