@@ -20,9 +20,12 @@ verifier:
 
 role_name_check: 1
 
-test_sequence:
-  - destroy
-  - create
-  - converge
-#  - idempotence
-  - verify
+scenario:
+  name: default
+  test_sequence:
+    - destroy
+    - create
+    - converge
+#    - idempotence
+    - verify
+    - destroy 
